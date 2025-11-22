@@ -1,0 +1,19 @@
+{
+  "name": "exercise-001-backend-solution",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/index.js",
+    "start": "node src/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "dependencies": {
+    "fastify": "^4.24.3",
+    "@fastify/cors": "^8.4.1",
+    "graphql": "^16.8.1",
+    "mercurius": "^13.3.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

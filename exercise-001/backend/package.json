@@ -1,0 +1,21 @@
+{
+  "name": "exercise-001-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.4.1",
+    "fastify": "^4.24.3",
+    "fastify-cli": "^7.4.1",
+    "graphql": "^16.8.1",
+    "mercurius": "^13.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
