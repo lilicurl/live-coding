@@ -4,6 +4,7 @@ export const schema = `
     name: String!
     price: Float!
     stock: Int!
+    cartIncluded: [CartItem!]
   }
 
   type CartItem {
@@ -14,6 +15,7 @@ export const schema = `
   type Query {
     products: [Product!]!
     cart: [CartItem!]!
+    product(id: ID!): Product
   }
 
   type Mutation {

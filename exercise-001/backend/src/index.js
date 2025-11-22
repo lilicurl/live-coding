@@ -3,16 +3,11 @@ import Fastify from 'fastify';
 import mercurius from 'mercurius';
 import cors from '@fastify/cors';
 
-const fs = require('fs');
-const path = require('path');
 
 const fastify = Fastify({ logger: true });
 
-// In-memory data store - everything in one place (not ideal)
-let products = path.join(__dirname, 'shared/products.json');
+import { db, products } from './shared/_db.js';
 
-
-let cart = [];
 
 
 
@@ -20,12 +15,19 @@ let cart = [];
 const resolvers = {
   Query: {
     products: () => {
-      // TODO: This works but could be better organized
-      return products;
+      return db.products; 
     },
     cart: () => {
-      return cart;
+      return db.cart;
     },
+    product(_, { id }) {
+      return db.products.find(p => p.id === id);
+    },
+  },
+  Product: {
+    cartIncluded: (product) => {
+      return db.cart.filter(item => item.productId === product.id);
+    }
   },
   Mutation: {
     // BUG: No stock validation! Candidates should fix this
