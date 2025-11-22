@@ -6,3 +6,4 @@ build/
 .DS_Store
 *.log
 exercise-001/backend/backend/node_modules/
+exercise-001/backend/backend/dist/

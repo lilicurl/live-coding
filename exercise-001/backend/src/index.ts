@@ -6,7 +6,8 @@ import cors from '@fastify/cors';
 
 const fastify = Fastify({ logger: true });
 
-import { db, products } from './shared/_db.js';
+import db from './shared/_db.js';
+import schema from './shared/schema.js';
 
 
 
@@ -32,19 +33,19 @@ const resolvers = {
   Mutation: {
     // BUG: No stock validation! Candidates should fix this
     addToCart: (_, { productId, quantity }) => {
-      const existing = cart.find(item => item.productId === productId);
+      const existing = db.cart.find(item => item.productId === productId);
       if (existing) {
         existing.quantity += quantity;
       } else {
-        cart.push({ productId, quantity });
+        db.cart.push({ productId, quantity });
       }
       // BUG: Not updating product stock
-      return cart;
+      return db.cart;
     },
     // BUG: Doesn't restore stock when removing
     removeFromCart: (_, { productId }) => {
-      cart = cart.filter(item => item.productId !== productId);
-      return cart;
+      db.cart = db.cart.filter(item => item.productId !== productId);
+      return db.cart;
     },
   },
 };

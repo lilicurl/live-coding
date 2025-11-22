@@ -5,6 +5,6 @@ let products = [
   { id: '4', name: 'Mechanical Keyboard', price: 129.99, stock: 8 }
 ]
 
-let cart = [];
+let cart : any[] = [];
 
-export { products, cart };    
+export default { products, cart };    

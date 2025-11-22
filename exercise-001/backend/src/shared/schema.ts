@@ -1,4 +1,4 @@
-export const schema = `
+const schema = `
   type Product {
     id: ID!
     name: String!
@@ -23,3 +23,5 @@ export const schema = `
     removeFromCart(productId: ID!): [CartItem!]!
   }
 `;
+
+export default schema;
